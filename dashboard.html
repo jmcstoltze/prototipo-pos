@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototipo POS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="img/llave-de-sol.png" type="image/png">
+    <!-- Bootstrap Icons (para íconos de flechas) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body style="background-color: lightgray">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark" style="display: block; flex-wrap: nowrap;">
+        <div class="container-fluid">
+
+            <!-- Botón de hamburguesa SIEMPRE visible -->
+            <button class="btn btn-dark" onclick="toggleMenu()">
+                <span class="navbar-toggler-icon"></span> <!-- Icono de hamburguesa -->
+            </button>
+
+            <!-- Texto centrado -->
+            <div class="mx-auto text-white">
+                <span class="h5" style="text-decoration: underline;">Dashboard</span>
+            </div>
+
+            <!-- Información del usuario en la esquina derecha -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <span class="nav-link text-white">Administrador&nbsp;&nbsp;&nbsp;&nbsp;|</span> <!-- Texto adicional -->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contreras Stoltze Jose Manuel</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><p class="dropdown-item">Administrador</p></li>
+                        <li><hr class="dropdown-divider"></li> <!-- Líneas divisoria -->
+                        <li><p class="dropdown-item">jmcstoltze</p></li>
+                        <li><p class="dropdown-item">jmcontreras.stoltze@gmail.com</p></li>
+                        <li><p class="dropdown-item">+569 9635 2539</p></li>
+                        <li><hr class="dropdown-divider"></li><!-- Líneas divisoria -->
+                        <li><a class="dropdown-item logout-btn" href="index.html">Cerrar sesión <i class="bi bi-arrow-right-circle"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Menú Lateral -->
+    <div id="sidebar">
+        <div class="sidebar-header">
+            <h4 style="text-decoration: underline;">Menú de Opciones</h4>
+        </div>
+        <ul class="sidebar-menu">
+
+            <!-- Ventas con submenú -->
+            <li class="has-submenu">
+                <a href="#" class="submenu-toggle">
+                    <i class="bi bi-cart"></i> Ventas
+                    <i class="bi bi-chevron-down submenu-indicator"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#"><i class="bi bi-calendar-day"></i> Diarias</a></li>
+                    <li><a href="#"><i class="bi bi-calendar-week"></i> Semanales</a></li>
+                    <li><a href="#"><i class="bi bi-calendar-month"></i> Mensuales</a></li>
+                    <li><a href="#"><i class="bi bi-calendar"></i> Anuales</a></li>
+                </ul>
+            </li>
+        
+            <!-- Inventario con submenú -->
+            <li class="has-submenu">
+                <a href="#" class="submenu-toggle">
+                    <i class="bi bi-box-seam"></i> Inventario
+                    <i class="bi bi-chevron-down submenu-indicator"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#"><i class="bi bi-pencil-square"></i> Editar productos</a></li>
+                    <li><a href="#"><i class="bi bi-percent"></i> Editar promociones</a></li>
+                    <li><a href="#"><i class="bi bi-box-arrow-in-down"></i> Modificar stock</a></li>
+                </ul>
+            </li>
+        
+            <!-- Clientes con submenú -->
+            <li class="has-submenu">
+                <a href="#" class="submenu-toggle">
+                    <i class="bi bi-people"></i> Clientes
+                    <i class="bi bi-chevron-down submenu-indicator"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#"><i class="bi bi-person-plus"></i> Registrar cliente</a></li>
+                    <li><a href="#"><i class="bi bi-person-lines-fill"></i> Editar cliente</a></li>
+                    <li><a href="#"><i class="bi bi-person-x"></i> Eliminar cliente</a></li>
+                </ul>
+            </li>
+        
+            <!-- Sucursales con submenú -->
+            <li class="has-submenu">
+                <a href="#" class="submenu-toggle">
+                    <i class="bi bi-shop"></i> Sucursales
+                    <i class="bi bi-chevron-down submenu-indicator"></i>
+                </a>
+                <ul class="submenu">
+                    <li><a href="#"><i class="bi bi-shop-window"></i> Asignar sucursales</a></li>
+                    <li><a href="#"><i class="bi bi-cash-coin"></i> Asignar cajas</a></li>
+                </ul>
+            </li>
+        
+            <!-- Cerrar sesión -->
+            <li>
+                <a href="index.html" class="logout-menu-item">
+                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="content" id="content">
+        <div class="container-fluid mt-4">
+            <!-- Card -->
+            <div class="card horizontal-card mb-4" style="margin-left: 15%; margin-top: 9%;">
+                <div class="row g-0">
+                    <!-- Imagen de usuario -->
+                    <div class="col-md-2 d-flex align-items-center justify-content-center">
+                        <i class="bi bi-person-circle fs-1"></i>
+                    </div>
+                    <div class="col-md-10 d-flex align-items-center">
+                    <div class="card-body text-dark"> <!-- Text-dark -->
+                        <a href="operar-caja.html" class="stretched-link text-decoration-none text-dark"> <!-- Text-dark -->
+                            <h3 class="card-title">Administrar Caja</h3>
+                            <hr class="border-dark"> <!-- Border-dark -->
+                            <p class="card-text">Gestionar ventas</p>
+                        </a>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-2 footer-custom">
+        <div class="container-fluid text-center">
+            <small>© 2025 Sistema POS. Todos los derechos reservados.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

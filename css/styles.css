@@ -1,0 +1,175 @@
+body, html{
+    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bg-cover {
+    background-image: url('../img/fondo-index.jpg'); /* Imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+}
+
+.card {
+    /*background-color: rgba(255, 255, 255, 0.9); /* Transparencia para ver el fondo */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 450px; /* Tamaño de la card */
+}
+
+/* Botón personalizado */
+.btn-custom {
+    background-color: #f07520;
+    border: none;
+    color: white;
+}
+
+.btn-custom:hover {
+    background-color: black;
+    color: white;
+}
+
+.logout-btn {
+    color: white !important;
+    background-color: red !important;
+}
+
+.logout-btn:hover {
+    background-color: black !important;
+}
+
+/* Estilos para el menú lateral */
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #f07520; /* Naranja Principal */
+    position: fixed;
+    left: -250px;
+    top: 56px; /* Altura de la navbar */
+    transition: all 0.3s;
+    z-index: 1000;
+    box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+}
+        
+#sidebar.active {
+    left: 0;
+}
+        
+.sidebar-header {
+    padding: 20px;
+    color: white;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+        
+.sidebar-menu {
+    padding: 0;
+    list-style: none;
+}
+        
+.sidebar-menu li {
+    padding: 10px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    background-color: #f07520; /* Fondo naranja */
+}
+        
+.sidebar-menu li a {
+    color: white !important;
+    text-decoration: none;
+    display: block;
+}
+
+/* Elimina todos los efectos hover */
+.sidebar-menu li:hover,
+.submenu li:hover {
+    background-color: #f07520 !important; /* Mantiene el naranja */
+}
+
+.has-submenu:hover {
+    background-color: #e06c1d !important;
+}
+        
+.sidebar-menu li i {
+    margin-right: 10px;
+}
+        
+/* Ajuste del contenido cuando el menú está abierto */
+.content {
+    transition: margin-left 0.3s;
+    margin-left: 0;
+}
+        
+.content.shifted {
+    margin-left: 250px;
+}
+
+/* Estilos para los submenús */
+.has-submenu {
+    position: relative;
+}
+    
+.submenu {
+    display: none;
+    padding-left: 20px;
+    list-style: none;
+}
+    
+.submenu li {
+    padding: 8px 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+    
+.submenu li a {
+    color: white !important; /* Texto blanco */
+    font-size: 0.9em;
+}
+    
+.submenu-toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Flechas indicadoras */
+.submenu-indicator {
+    color: white !important; /* Flecha blanca */
+}
+    
+.has-submenu.active .submenu-indicator {
+    transform: rotate(180deg);
+}
+    
+.has-submenu.active .submenu {
+    display: block;
+}
+
+/* Estado activo mantiene colores */
+.has-submenu.active {
+    background-color: #f07520 !important;
+}
+    
+.logout-menu-item {
+    color: white !important;
+    background-color: #f07520 !important; /* Mismo naranja */
+}
+
+/* Estilos para el footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.footer-custom {
+    background-color: #e06c1d; /* Naranja */
+    height: 50px;
+    color: white;
+}
+
+/* Ajuste para el contenido principal */
+.content {
+    margin-bottom: 60px; /* Para que no quede tapado por el footer */
+}
