@@ -32,3 +32,12 @@ document.querySelectorAll('.submenu-toggle').forEach(item => {
     });
 });
 });
+
+// Función para habilitar/deshabilitar el modo edición
+function enableEditMode() {
+    const editButtons = document.querySelectorAll('.edit-buttons');
+    editButtons.forEach(button => {
+        button.classList.toggle('d-none');
+    });
+}
+        
