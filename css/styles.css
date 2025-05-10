@@ -12,12 +12,18 @@ body, html{
 }
 
 .card {
-    /*background-color: rgba(255, 255, 255, 0.9); /* Transparencia para ver el fondo */
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     width: 100%;
     max-width: 450px; /* Tamaño de la card */
+}
+    
+/* Estilo para los inputs cuando están enfocados */
+.form-control:focus {
+    border-color: #FFB347; /* Naranja pastel */
+    box-shadow: 0 0 0 0.25rem rgba(255, 179, 71, 0.25); /* Sombra naranja pastel */
+    outline: 0; /* Elimina el outline por defecto */
 }
 
 /* Botón personalizado */

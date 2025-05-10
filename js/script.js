@@ -40,4 +40,28 @@ function enableEditMode() {
         button.classList.toggle('d-none');
     });
 }
-        
+
+// Función para cargar datos del producto
+function loadProductData(sku) {
+    // Aquí normalmente harías una petición AJAX o buscar datos
+    // Ejemplo con datos estáticos basados en el SKU:
+    const productData = {
+        'GTR-IBZ-AS53': {
+            name: 'Guitarra eléctrica Ibanez AS53',
+            price: '339990',
+            sku: 'GTR-IBZ-AS53',
+            image: 'img/productos/01-guitarra-electrica-ibanez.png'
+        }
+        // Agregar más productos según sea necesario
+    };
+    
+    const product = productData[sku];
+    if(product) {
+        document.getElementById('editProductName').value = product.name;
+        document.getElementById('editProductPrice').value = product.price;
+        document.getElementById('editProductSKU').value = product.sku;
+        document.getElementById('editProductImage').value = product.image;
+    }
+}
+
+
