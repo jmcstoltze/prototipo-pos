@@ -4,6 +4,14 @@ function toggleMenu() {
     const content = document.getElementById('content');
     sidebar.classList.toggle('active');
     content.classList.toggle('shifted');
+
+    // Solo aplica 'shifted' en pantallas grandes
+    if (window.innerWidth > 768) {
+        content.classList.toggle('shifted');
+    } else {
+        // En móviles, alterna la clase que oculta el contenido
+        content.classList.toggle('sidebar-active');
+    }
 }
         
 // Cerrar menú al hacer clic fuera de él
@@ -64,4 +72,5 @@ function loadProductData(sku) {
     }
 }
 
-
+// Cambio automático del año en el footer
+document.getElementById('year').textContent = new Date().getFullYear();

@@ -1,6 +1,11 @@
-body, html{
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+  }
+
+html, body{
     height: 100%;
-    margin: 0;
     font-family: 'Roboto', sans-serif;
 }
 
@@ -8,56 +13,92 @@ body, html{
     background-image: url('../img/fondo-index.jpg'); /* Imagen de fondo */
     background-size: cover;
     background-position: center;
-    height: 100%;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* Manejo de la imagen de fondo para pantallas pequeñas */
+@media (max-width: 768px) {
+    .bg-cover {
+        background-image: url('../img/fondo-index-mobile.jpg'); /* Versión móvil */
+        background-position: top center;
+    }
+}
+
+:root {
+
+
+    --color-white: white; /* Color de texto o fondo */
+    --color-black: black; 
+    --color-red: red;
+
+    --color-sidebar-shadow: rgba(0,0,0,0.1);
+    --color-sidebar-bottom: rgba(255,255,255,0.1);
+    --color-sidebar-li: rgba(255,255,255,0.2);
+
+    --color-orange-background: #f07520; /* Naranjo oscuro */
+    
+    --color-input-focus: #FFB347; /* Naranja pastel */
+    --color-input-shadow: rgba(255, 179, 71, 0.25); /* Sombra naranja pastel */
+
+    --color-shadow: rgba(0, 0, 0, 0.3); /* Sombra predeterminada */
 }
 
 .card {
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 10px var(--color-shadow);
     width: 100%;
     max-width: 450px; /* Tamaño de la card */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+    .card {
+        max-width: 80%; /* Ocupa el 80% del ancho de la pantalla */
+    }
 }
     
 /* Estilo para los inputs cuando están enfocados */
 .form-control:focus {
-    border-color: #FFB347; /* Naranja pastel */
-    box-shadow: 0 0 0 0.25rem rgba(255, 179, 71, 0.25); /* Sombra naranja pastel */
+    border-color: var(--color-input-focus); 
+    box-shadow: 0 0 0 0.25rem var(--color-input-shadow);
     outline: 0; /* Elimina el outline por defecto */
 }
 
 /* Botón personalizado */
 .btn-custom {
-    background-color: #f07520;
+    background-color: var(--color-orange-background);
     border: none;
-    color: white;
+    color: var(--color-white);
 }
 
 .btn-custom:hover {
-    background-color: black;
-    color: white;
+    background-color: var(--color-black);
+    color: var(--color-white);
 }
 
 .logout-btn {
-    color: white !important;
-    background-color: red !important;
+    color: var(--color-white) !important;
+    background-color: var(--color-red) !important;
 }
 
 .logout-btn:hover {
-    background-color: black !important;
+    background-color: var(--color-black) !important;
 }
 
 /* Estilos para el menú lateral */
 #sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #f07520; /* Naranja Principal */
+    background-color: var(--color-orange-background); /* Naranja Principal */
     position: fixed;
     left: -250px;
     top: 56px; /* Altura de la navbar */
     transition: all 0.3s;
     z-index: 1000;
-    box-shadow: 3px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 3px 0 10px var(--color-sidebar-shadow);
 }
         
 #sidebar.active {
@@ -66,8 +107,8 @@ body, html{
         
 .sidebar-header {
     padding: 20px;
-    color: white;
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+    color: var(--color-white);
+    border-bottom: 1px solid var(--color-sidebar-bottom);
 }
         
 .sidebar-menu {
@@ -77,28 +118,40 @@ body, html{
         
 .sidebar-menu li {
     padding: 10px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    background-color: #f07520; /* Fondo naranja */
+    border-bottom: 1px solid var(--color-sidebar-li);
+    background-color: var(--color-orange-background); /* Fondo naranja */
 }
         
 .sidebar-menu li a {
-    color: white !important;
+    color: var(--color-white) !important;
     text-decoration: none;
     display: block;
 }
 
-/* Elimina todos los efectos hover */
+/* Elimina los efectos hover */
 .sidebar-menu li:hover,
 .submenu li:hover {
-    background-color: #f07520 !important; /* Mantiene el naranja */
+    background-color: var(--color-orange-background) !important; /* Mantiene el naranja */
 }
 
 .has-submenu:hover {
-    background-color: #e06c1d !important;
+    background-color: #e06c1d !important; /* No se está usando */
 }
         
 .sidebar-menu li i {
     margin-right: 10px;
+}
+
+/* Oculta el contenido cuando el sidebar está activo en móviles */
+@media (max-width: 768px) {
+    #content.sidebar-active {
+        display: none; /* Oculta completamente */
+    }
+    
+    /* Añade transición para efecto suave */
+    #content {
+        transition: all 0.3s ease;
+    }
 }
         
 /* Ajuste del contenido cuando el menú está abierto */
