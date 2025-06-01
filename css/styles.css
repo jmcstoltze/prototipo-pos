@@ -38,6 +38,7 @@ html, body{
     --color-sidebar-li: rgba(255,255,255,0.2);
 
     --color-orange-background: #f07520; /* Naranjo oscuro */
+    --color-orange-footer: #e06c1d; /* Diferencia de tono */
     
     --color-input-focus: #FFB347; /* Naranja pastel */
     --color-input-shadow: rgba(255, 179, 71, 0.25); /* Sombra naranja pastel */
@@ -152,6 +153,17 @@ html, body{
     #content {
         transition: all 0.3s ease;
     }
+
+    #sidebar.active {
+        display: block;
+    }
+}
+
+/* Para pantallas grandes (>768px) */
+@media (min-width: 769px) {
+    .content.shifted {
+        margin-left: 250px;
+    }
 }
         
 /* Ajuste del contenido cuando el menú está abierto */
@@ -223,10 +235,14 @@ html, body{
 }
 
 .footer-custom {
-    background-color: #e06c1d; /* Naranja */
+    background-color: var(--color-orange-footer); /* Naranja */
     height: 50px;
     color: white;
 }
+
+/**********************/
+/* CARDS DE PRODUCTOS */
+/**********************/
 
 /* Ajuste para el contenido principal productos*/
 .content {
@@ -248,6 +264,21 @@ html, body{
     height: 120px; /* Altura imagen */
     object-fit: contain;
     padding: 5px;
+}
+
+/* Para pantallas pequeñas (menos de 576px) */
+@media (max-width: 575.98px) {
+    .product-card {
+        max-width: 100%; /* Ajusta este valor según necesites */
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* Opcional: Ajusta el tamaño de las imágenes en móviles */
+.product-img {
+    height: 180px;
+    object-fit: contain;
 }
         
 .card-body {
