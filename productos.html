@@ -53,6 +53,37 @@
         </div>
     </nav>
 
+    <!-- Barra de búsqueda y filtros -->
+    <div class="container-fluid bg-light py-2 shadow-sm">
+        <div class="row align-items-center">
+            <!-- Buscador -->
+            <div class="col-md-6 mb-2 mb-md-0">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar por nombre o SKU..." id="searchInput">
+                    <button class="btn btn-solid-orange" type="button" id="searchButton">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                </div>
+            </div>
+        
+            <!-- Filtro por sucursal -->
+            
+            <div class="col-md-4">
+                <select class="form-select" id="branchSelect">
+                    <option value="all">Todas las sucursales</option>
+                    <option value="branch1">Sucursal Centro</option>
+                    <option value="branch2">Sucursal Norte</option>
+                    <option value="branch3">Sucursal Sur</option>
+                </select>
+            </div>
+        
+            <!-- Contador de resultados -->
+            <div class="col-md-2 text-md-end">
+                <small class="text-muted" id="resultCount">12 productos</small>
+            </div>
+        </div>
+    </div>
+
     <!-- Contenido principal -->
     <div class="container-fluid mt-4">
         <!-- Botones flotantes para acciones -->
@@ -79,7 +110,9 @@
                         <p class="card-text">$339.990</p>
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">GTR-IBZ-AS53</small><br>
-                        <small class="text-muted">Stock: 200 unidades</small>
+                        <small class="text-muted">Stock: 200 unidades</small><br>
+                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
+
                         <div class="edit-buttons mt-2 d-none">
 
                             <!-- Botón Editar (modificado) -->
@@ -103,7 +136,9 @@
                         <p class="card-text">$243.591</p>
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">GTR-JKS-JS11</small><br>
-                        <small class="text-muted">Stock: 200 unidades</small>
+                        <small class="text-muted">Stock: 200 unidades</small><br>
+                        <small class="text-muted"><strong>NO DISPONIBLE</strong></small>
+
                         <div class="edit-buttons mt-2 d-none">                    
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
                             <button class="btn btn-sm btn-black-edit">Eliminar</button>
@@ -122,6 +157,7 @@
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">BJO-IBZ-GSR185</small><br>
                         <small class="text-muted"> Stock: 200 unidades</small>
+                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
                         <div class="edit-buttons mt-2 d-none">
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
                             <button class="btn btn-sm btn-black-edit">Eliminar</button>
@@ -139,6 +175,8 @@
                         <p class="card-text">$699.900</p>
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">BJO-YMH-BB235</small>
+                        <small class="text-muted">Stock: 200 unidades</small><br>
+                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
                         <div class="edit-buttons mt-2 d-none">
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
                             <button class="btn btn-sm btn-black-edit">Eliminar</button>
@@ -156,6 +194,8 @@
                         <p class="card-text">$230.990</p>
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">AMP-LNY-LX35R</small>
+                        <small class="text-muted">Stock: 200 unidades</small><br>
+                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
                         <div class="edit-buttons mt-2 d-none">
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
                             <button class="btn btn-sm btn-black-edit">Eliminar</button>

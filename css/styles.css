@@ -244,6 +244,24 @@ html, body{
 /* CARDS DE PRODUCTOS */
 /**********************/
 
+/* Búsqueda y filtros */
+#branchSelect {
+    background-color: var(--color-white); /* Color de fondo oscuro */
+    color: #2e2e2e;
+    border-radius: 5px;
+}
+
+#branchSelect:focus {
+    box-shadow: 0 0 0 0.25rem var(--color-input-shadow);
+    border: 0.5px solid var(--color-input-focus);
+}
+
+/* Personalización de las opciones */
+#branchSelect option {
+    background: var(--color-white);
+    color: var(--color-black);
+}
+
 /* Ajuste para el contenido principal productos*/
 .content {
     margin-bottom: 60px; /* Para que no quede tapado por el footer */
@@ -364,4 +382,6 @@ html, body{
 .btn-black-edit .bi {
     color: white; /* Asegura que el icono sea negro */
 }
-    
+
+
+
