@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototipo POS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=1.0.2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="img/llave-de-sol.png" type="image/png">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .promo-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid #fd7e14;
+        }
+        .promo-card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        .product-chip {
+            background-color: #f8f9fa;
+            border-radius: 16px;
+            padding: 4px 12px;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            display: inline-flex;
+            align-items: center;
+        }
+        .discount-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body style="background-color: lightgrey">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark" style="display: block; flex-wrap: nowrap;">
+        <div class="container-fluid">
+            <button class="btn btn-dark" onclick="window.location.href='dashboard.html'">
+                <i class="bi bi-arrow-left-circle"></i>
+            </button>
+            <div class="mx-auto text-white d-none d-md-block">
+                <span class="h5" style="text-decoration: underline;">Promociones</span>
+            </div>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item d-none d-sm-block">
+                    <span class="nav-link text-white">Administrador&nbsp;&nbsp;&nbsp;&nbsp;|</span>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contreras Stoltze Jose Manuel</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><p class="dropdown-item">Administrador</p></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><p class="dropdown-item">jmcstoltze</p></li>
+                        <li><p class="dropdown-item">jmcontreras.stoltze@gmail.com</p></li>
+                        <li><p class="dropdown-item">+569 9635 2539</p></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item logout-btn" href="index.html">Cerrar sesión <i class="bi bi-arrow-right-circle"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Barra de búsqueda y acciones -->
+    <div class="container-fluid bg-light py-2 shadow-sm">
+        <div class="row align-items-center">
+            <div class="col-md-8 mb-2 mb-md-0">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar promoción...">
+                    <button class="btn btn-solid-orange" type="button">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-4 text-md-end">
+                <button class="btn btn-solid-orange" data-bs-toggle="modal" data-bs-target="#newPromoModal">
+                    <i class="bi bi-plus-lg"></i> Nueva Promoción
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="container-fluid mt-4">
+        <!-- Filtros -->
+        <div class="row mb-3">
+            <div class="col-md-4 mb-2">
+                <select class="form-select">
+                    <option selected>Todas las sucursales</option>
+                    <option>Sucursal Centro</option>
+                    <option>Sucursal Norte</option>
+                    <option>Sucursal Sur</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-2">
+                <select class="form-select">
+                    <option selected>Todas las categorías</option>
+                    <option>Instrumentos</option>
+                    <option>Amplificadores</option>
+                    <option>Accesorios</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-2">
+                <select class="form-select">
+                    <option selected>Todas las promociones</option>
+                    <option>Activas</option>
+                    <option>Inactivas</option>
+                    <option>Próximas</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Listado de promociones -->
+        <div class="row">
+            <!-- Promoción 1 -->
+            <div class="col-lg-6 mb-4">
+                <div class="card promo-card h-100">
+                    <div class="card-body position-relative">
+                        <span class="discount-badge bg-success text-white">-20%</span>
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="card-title mb-0">Combo Guitarra + Amplificador</h5>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="promo1" checked>
+                                <label class="form-check-label" for="promo1">Activa</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <span class="badge bg-info me-2">Válida hasta: 30/06/2023</span>
+                            <span class="badge bg-secondary">Sucursal Centro</span>
+                        </div>
+                        
+                        <h6 class="mb-2">Productos incluidos:</h6>
+                        <div class="mb-3">
+                            <span class="product-chip">
+                                <img src="img/productos/01-guitarra-electrica-ibanez.png" width="30" class="me-2">
+                                Guitarra Ibanez AS53
+                                <button class="btn btn-sm btn-link text-danger ms-2 p-0">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </span>
+                            <span class="product-chip">
+                                <img src="img/productos/05-amp-laney-guitarra-electrica.png" width="30" class="me-2">
+                                Amplificador Laney LX35R
+                                <button class="btn btn-sm btn-link text-danger ms-2 p-0">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </span>
+                        </div>
+                        
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <label class="form-label">Precio original</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" value="570,980" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Precio promocional</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" value="456,784">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button class="btn btn-sm btn-outline-secondary">Ver detalles</button>
+                            <button class="btn btn-sm btn-solid-orange">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Promoción 2 -->
+            <div class="col-lg-6 mb-4">
+                <div class="card promo-card h-100">
+                    <div class="card-body position-relative">
+                        <span class="discount-badge bg-danger text-white">$50k</span>
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <h5 class="card-title mb-0">Pack Inicio Guitarrista</h5>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="promo2">
+                                <label class="form-check-label" for="promo2">Activa</label>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <span class="badge bg-info me-2">Válida hasta: 15/07/2023</span>
+                            <span class="badge bg-secondary">Todas las sucursales</span>
+                        </div>
+                        
+                        <h6 class="mb-2">Productos incluidos:</h6>
+                        <div class="mb-3">
+                            <span class="product-chip">
+                                <img src="img/productos/02-guitarra-electrica-jackson.png" width="30" class="me-2">
+                                Guitarra Jackson JS11
+                                <button class="btn btn-sm btn-link text-danger ms-2 p-0">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </span>
+                            <span class="product-chip">
+                                <img src="img/productos/12-mic-vocal-shure.png" width="30" class="me-2">
+                                Micrófono Shure SM58
+                                <button class="btn btn-sm btn-link text-danger ms-2 p-0">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </span>
+                            <span class="product-chip">
+                                <img src="img/productos/09-interfaz-audio-focusrite.png" width="30" class="me-2">
+                                Interfaz Focusrite
+                                <button class="btn btn-sm btn-link text-danger ms-2 p-0">
+                                    <i class="bi bi-x"></i>
+                                </button>
+                            </span>
+                        </div>
+                        
+                        <div class="row g-2">
+                            <div class="col-md-6">
+                                <label class="form-label">Precio original</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">$</span>
+                                    <input type="text" class="form-control" value="703,481" disabled>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Descuento fijo</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">$</span>
+                                    <input type="number" class="form-control" value="50,000">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button class="btn btn-sm btn-outline-secondary">Ver detalles</button>
+                            <button class="btn btn-sm btn-solid-orange">Guardar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Promoción 3 (Plantilla vacía) -->
+            <div class="col-lg-6 mb-4">
+                <div class="card border-secondary h-100">
+                    <div class="card-body text-center d-flex flex-column justify-content-center">
+                        <i class="bi bi-plus-circle display-5 text-secondary mb-3"></i>
+                        <h5 class="text-secondary">Crear nueva promoción</h5>
+                        <button class="btn btn-solid-orange align-self-center" data-bs-toggle="modal" data-bs-target="#newPromoModal">
+                            Comenzar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nueva Promoción -->
+    <div class="modal fade" id="newPromoModal" tabindex="-1" aria-labelledby="newPromoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newPromoModalLabel">Nueva Promoción</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Nombre de la promoción</label>
+                                <input type="text" class="form-control" placeholder="Ej: Combo Guitarra + Ampli">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de descuento</label>
+                                <select class="form-select">
+                                    <option selected>Porcentaje</option>
+                                    <option>Monto fijo</option>
+                                    <option>Precio fijo</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Valor del descuento</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">$ o %</span>
+                                    <input type="number" class="form-control" placeholder="Ej: 20">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Fecha de término</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Sucursales aplicables</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="allBranches" checked>
+                                    <label class="form-check-label" for="allBranches">Todas las sucursales</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="branch1">
+                                    <label class="form-check-label" for="branch1">Sucursal Centro</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="branch2">
+                                    <label class="form-check-label" for="branch2">Sucursal Norte</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="branch3">
+                                    <label class="form-check-label" for="branch3">Sucursal Sur</label>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label">Seleccionar productos</label>
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Buscar productos...">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                                <div class="border p-2" style="max-height: 200px; overflow-y: auto;">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="product1">
+                                        <label class="form-check-label" for="product1">
+                                            Guitarra eléctrica Ibanez AS53 (GTR-IBZ-AS53)
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="product2">
+                                        <label class="form-check-label" for="product2">
+                                            Amplificador de guitarra Laney LX35R (AMP-LNY-LX35R)
+                                        </label>
+                                    </div>
+                                    <!-- Más productos... -->
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-solid-orange">Crear Promoción</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-2 footer-custom">
+        <div class="container-fluid text-center">
+            <small>© <span id="year"></span> Sistema POS. Todos los derechos reservados.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

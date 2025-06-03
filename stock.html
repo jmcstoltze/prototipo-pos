@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototipo POS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=1.0.2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="img/llave-de-sol.png" type="image/png">
+    <!-- Bootstrap Icons (para íconos de flechas) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body style="background-color: lightgrey">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark" style="display: block; flex-wrap: nowrap;">
+        <div class="container-fluid">
+
+            <!-- Botón de flecha para volver atrás -->
+            <button class="btn btn-dark" onclick="window.location.href='dashboard.html'">
+                <i class="bi bi-arrow-left-circle"></i>
+            </button>
+
+            <!-- Texto centrado -->
+            <div class="mx-auto text-white d-none d-md-block">
+                <span class="h5" style="text-decoration: underline;">Stock</span>
+            </div>
+
+            <!-- Información del usuario en la esquina derecha -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item d-none d-sm-block">
+                    <span class="nav-link text-white">Administrador&nbsp;&nbsp;&nbsp;&nbsp;|</span> <!-- Texto adicional -->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contreras Stoltze Jose Manuel</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><p class="dropdown-item">Administrador</p></li>
+                        <li><hr class="dropdown-divider"></li> <!-- Líneas divisoria -->
+                        <li><p class="dropdown-item">jmcstoltze</p></li>
+                        <li><p class="dropdown-item">jmcontreras.stoltze@gmail.com</p></li>
+                        <li><p class="dropdown-item">+569 9635 2539</p></li>
+                        <li><hr class="dropdown-divider"></li><!-- Líneas divisoria -->
+                        <li><a class="dropdown-item logout-btn" href="index.html">Cerrar sesión <i class="bi bi-arrow-right-circle"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Barra de búsqueda y filtros -->
+    <div class="container-fluid bg-light py-2 shadow-sm">
+        <div class="row align-items-center">
+            <!-- Buscador -->
+            <div class="col-md-6 mb-2 mb-md-0">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Buscar por nombre o SKU..." id="searchInput">
+                    <button class="btn btn-solid-orange" type="button" id="searchButton">
+                        <i class="bi bi-search"></i> Buscar
+                    </button>
+                </div>
+            </div>
+        
+            <!-- Filtro por sucursal -->
+            <div class="col-md-4">
+                <select class="form-select" id="branchSelect">
+                    <option value="">Seleccionar sucursal</option>
+                    <option value="branch1">Sucursal Centro</option>
+                    <option value="branch2">Sucursal Norte</option>
+                    <option value="branch3">Sucursal Sur</option>
+                    <option value="branch4">Sucursal Oriente</option>
+                </select>                
+            </div>
+        
+            <!-- Contador de resultados -->
+            <div class="col-md-2 text-md-end">
+                <small class="text-muted" id="resultCount">12 productos</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido principal - Tabla de stock -->
+    <div class="container-fluid mt-4">
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered bg-white">
+                <thead class="table-dark">
+                    <tr>
+                        <th width="10%" class="d-none d-sm-table-cell">Imagen</th>
+                        <th width="25%">Producto</th>
+                        <th width="15%" class="d-none d-lg-table-cell">SKU</th>
+                        <th width="10%">Stock</th>
+                        <th width="25%">Ajuste</th>                        
+                        <th width="5%">Aplicar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Producto 1 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/01-guitarra-electrica-ibanez.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Guitarra eléctrica Ibanez AS53</td>
+                        <td class="align-middle d-none d-lg-table-cell">GTR-IBZ-AS53</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 2 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/02-guitarra-electrica-jackson.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Guitarra eléctrica Jackson JS11</td>
+                        <td class="align-middle d-none d-lg-table-cell">GTR-JKS-JS11</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 3 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/03-bajo-electrico-ibanez.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Bajo eléctrico Ibanez GSR185</td>
+                        <td class="align-middle d-none d-lg-table-cell">BJO-IBZ-GSR185</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 4 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/04-bajo-electrico-yamaha.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Bajo eléctrico YAMAHA BB235</td>
+                        <td class="align-middle d-none d-lg-table-cell">BJO-YMH-BB235</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 5 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/05-amp-laney-guitarra-electrica.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Amplificador de guitarra Laney LX35R</td>
+                        <td class="align-middle d-none d-lg-table-cell">AMP-LNY-LX35R</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 6 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/06-amp-line6-guitarra-electrica.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Amplificador de guitarra Line 6 V60</td>
+                        <td class="align-middle d-none d-lg-table-cell">AMP-L6-V60</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 7 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/07-amp-fender-bajo.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Amplificador de bajo Fender Rumble 40</td>
+                        <td class="align-middle d-none d-lg-table-cell">AMP-FDR-RMB40</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 8 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/08-amp-ampeg-bajo.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Amplificador de bajo Ampeg Rocket 115</td>
+                        <td class="align-middle d-none d-lg-table-cell">AMP-AMPG-R115</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 9 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/09-interfaz-audio-focusrite.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Focusrite Scarlett 4i4 - Interfaz USB</td>
+                        <td class="align-middle d-none d-lg-table-cell">STD-FCS-4I4USB</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 10 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/10-mixer-novak.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Novik mezcladora 300WX2</td>
+                        <td class="align-middle d-none d-lg-table-cell">STD-NVK-300WX2</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 11 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/11-monitores-samson.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Monitores de estudio Samson M50</td>
+                        <td class="align-middle d-none d-lg-table-cell">STD-SMS-M50</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    
+                    <!-- Producto 12 -->
+                    <tr>
+                        <td class="align-middle text-center d-none d-sm-table-cell">
+                            <img src="img/productos/12-mic-vocal-shure.png" class="img-thumbnail" style="max-height: 60px;">
+                        </td>
+                        <td class="align-middle">Shure SM58-LC Micrófono Vocal</td>
+                        <td class="align-middle d-none d-lg-table-cell">STD-SHR-SM58LC</td>
+                        <td class="align-middle">200</td>
+                        <td class="align-middle">
+                            <div class="input-group">
+                                <select class="form-select form-select-sm" style="width: 30%;">
+                                    <option value="add">Añadir</option>
+                                    <option value="subtract">Restar</option>
+                                    <option value="set">Establecer</option>
+                                </select>
+                                <input type="number" class="form-control form-control-sm" value="0" min="0">
+                            </div>
+                        </td>                        
+                        <td class="align-middle text-center">
+                            <!-- Botón aplicar o guardar con ícono -->
+                            <button class="btn btn-sm btn-solid-orange" title="Guardar cambios">
+                                <i class="bi bi-save"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Botones de acciones masivas -->
+        <div class="row mt-3">
+            <div class="col-4">
+                <div class="d-flex gap-2">
+                    <button class="btn btn-black-edit" >
+                        <i class="bi bi-download"></i>Exportar
+                        <!--<span class="d-none d-sm-inline"> Exportar</span>-->
+                    </button>
+                    <!--
+                    <button class="btn btn-solid-orange">
+                        <i class="bi bi-upload"></i>
+                        <span class="d-none d-sm-inline"> Importar</span>
+                    </button> -->
+                </div>
+            </div>
+            <div class="col-8">
+                <button class="btn btn-solid-orange" style="min-width: 250px;">
+                    <i class="bi bi-check-circle"></i> Aplicar todos los cambios
+                </button>
+            </div>
+        </div>
+    </div>
+    <br><br><br><br>
+
+    <footer class="footer mt-auto py-2 footer-custom">
+        <div class="container-fluid text-center">
+            <small>© <span id="year"></span> Sistema POS. Todos los derechos reservados.</small>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

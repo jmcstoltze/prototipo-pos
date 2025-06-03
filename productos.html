@@ -66,14 +66,13 @@
                 </div>
             </div>
         
-            <!-- Filtro por sucursal -->
-            
+            <!-- Filtro por categoría -->            
             <div class="col-md-4">
                 <select class="form-select" id="branchSelect">
-                    <option value="all">Todas las sucursales</option>
-                    <option value="branch1">Sucursal Centro</option>
-                    <option value="branch2">Sucursal Norte</option>
-                    <option value="branch3">Sucursal Sur</option>
+                    <option value="all">Todas las categorías</option>
+                    <option value="branch1">Instrumentos musicales</option>
+                    <option value="branch2">Amplificadores</option>
+                    <option value="branch3">Estudio de grabación</option>
                 </select>
             </div>
         
@@ -98,8 +97,7 @@
             </button>            
         </div>
 
-        <!-- Grid de productos -->
-        <!-- <div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-1"> -->
+        <!-- Grid de productos -->        
         <div class="row justify-content-center row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-4 row-cols-xl-5 g-1">    
             <!-- Producto 1 -->
             <div class="col">
@@ -110,8 +108,7 @@
                         <p class="card-text">$339.990</p>
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">GTR-IBZ-AS53</small><br>
-                        <small class="text-muted">Stock: 200 unidades</small><br>
-                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
+                        <small class="text-muted">Stock total: 200 un.</small><br>                        
 
                         <div class="edit-buttons mt-2 d-none">
 
@@ -136,8 +133,7 @@
                         <p class="card-text">$243.591</p>
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">GTR-JKS-JS11</small><br>
-                        <small class="text-muted">Stock: 200 unidades</small><br>
-                        <small class="text-muted"><strong>NO DISPONIBLE</strong></small>
+                        <small class="text-muted">Stock total: 200 un.</small><br>                        
 
                         <div class="edit-buttons mt-2 d-none">                    
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
@@ -156,8 +152,7 @@
                         <p class="card-text">$289.990</p>
                         <small class="text-muted">SKU:</small><br>
                         <small class="text-muted">BJO-IBZ-GSR185</small><br>
-                        <small class="text-muted"> Stock: 200 unidades</small>
-                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
+                        <small class="text-muted"> Stock total: 200 un.</small>                        
                         <div class="edit-buttons mt-2 d-none">
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
                             <button class="btn btn-sm btn-black-edit">Eliminar</button>
@@ -174,9 +169,8 @@
                         <h5 class="card-title">Bajo eléctrico YAMAHA BB235</h5>
                         <p class="card-text">$699.900</p>
                         <small class="text-muted">SKU:</small><br>
-                        <small class="text-muted">BJO-YMH-BB235</small>
-                        <small class="text-muted">Stock: 200 unidades</small><br>
-                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
+                        <small class="text-muted">BJO-YMH-BB235</small><br>
+                        <small class="text-muted">Stock total: 200 un.</small><br>                    
                         <div class="edit-buttons mt-2 d-none">
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
                             <button class="btn btn-sm btn-black-edit">Eliminar</button>
@@ -193,9 +187,8 @@
                         <h5 class="card-title">Amplificador de guitarra Laney LX35R</h5>
                         <p class="card-text">$230.990</p>
                         <small class="text-muted">SKU:</small><br>
-                        <small class="text-muted">AMP-LNY-LX35R</small>
-                        <small class="text-muted">Stock: 200 unidades</small><br>
-                        <small class="text-muted"><strong>DISPONIBLE</strong></small>
+                        <small class="text-muted">AMP-LNY-LX35R</small><br>
+                        <small class="text-muted">Stock total: 200 un.</small><br>
                         <div class="edit-buttons mt-2 d-none">
                             <button class="btn btn-sm btn-solid-orange">Editar</button>
                             <button class="btn btn-sm btn-black-edit">Eliminar</button>
@@ -401,7 +394,7 @@
 
     <footer class="footer mt-auto py-2 footer-custom">
         <div class="container-fluid text-center">
-            <small>© 2025 Sistema POS. Todos los derechos reservados.</small>
+            <small>© <span id="year"></span> Sistema POS. Todos los derechos reservados.</small>
         </div>
     </footer>
 
