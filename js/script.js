@@ -86,6 +86,7 @@ function loadProductData(sku) {
     // Ejemplo con datos estáticos basados en el SKU:
     const productData = {
         'GTR-IBZ-AS53': {
+            category: 'Instrumentos musicales',
             name: 'Guitarra eléctrica Ibanez AS53',
             price: '339990',
             sku: 'GTR-IBZ-AS53',
@@ -96,6 +97,7 @@ function loadProductData(sku) {
     
     const product = productData[sku];
     if(product) {
+        document.getElementById('editProductCategory').value = product.category;
         document.getElementById('editProductName').value = product.name;
         document.getElementById('editProductPrice').value = product.price;
         document.getElementById('editProductSKU').value = product.sku;

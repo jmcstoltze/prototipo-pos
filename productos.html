@@ -337,6 +337,16 @@
                             <label for="productCode" class="form-label">Código de Barra</label>
                             <input type="text" class="form-control" id="productCode" required>
                         </div>
+                        <!-- Campo de Categoría -->
+                        <div class="mb-3">
+                            <label for="productCategory" class="form-label">Categoría</label>
+                            <select class="form-select" id="productCategory" required>
+                                <option value="">Seleccione una categoría</option>
+                                <option value="1">Instrumentos musicales</option>
+                                <option value="2">Amplificadores</option>
+                                <option value="3">Estudio de Grabación</option>
+                            </select>
+                        </div>
                         <div class="mb-3">
                             <label for="productName" class="form-label">Nombre del Producto</label>
                             <input type="text" class="form-control" id="productName" required>
@@ -384,6 +394,15 @@
                         <div class="mb-3">
                             <label for="editProductCode" class="form-label">Code</label>
                             <input type="text" class="form-control" id="editProductCode" required readonly>
+                        </div>
+                        <!-- Campo de Categoría -->
+                        <div class="mb-3">
+                            <label for="editProductCategory" class="form-label">Categoría</label>
+                            <select class="form-select" id="editProductCategory" required>
+                                <option value="Instrumentos musicales">Instrumentos musicales</option>                
+                                <option value="2">Amplificadores</option>
+                                <option value="3">Estudio de Grabación</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="editProductName" class="form-label">Nombre del Producto</label>
