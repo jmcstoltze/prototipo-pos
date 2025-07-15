@@ -4,7 +4,7 @@ function toggleMenu() {
     const sidebar = document.getElementById('sidebar');
     const content = document.getElementById('content');
     sidebar.classList.toggle('active');
-    
+
     // Solo para móviles (≤768px)
     if (window.innerWidth <= 768) {
         content.classList.toggle('sidebar-active');
@@ -19,10 +19,10 @@ document.addEventListener('click', function(event) {
     const sidebar = document.getElementById('sidebar');
     const hamburger = document.querySelector('.navbar-toggler-icon');
     const content = document.getElementById('content');
-    
+
     if (!sidebar.contains(event.target) && event.target !== hamburger && !hamburger.contains(event.target)) {
         sidebar.classList.remove('active');
-        
+
         // Elimina ambas clases para asegurar el estado correcto
         content.classList.remove('shifted', 'sidebar-active');
     }
@@ -35,7 +35,7 @@ document.querySelectorAll('.submenu-toggle').forEach(item => {
     e.preventDefault();
     const parent = this.parentElement;
     parent.classList.toggle('active');
-            
+
     // Cerrar otros submenús abiertos
     document.querySelectorAll('.has-submenu').forEach(submenu => {
         if (submenu !== parent && submenu.classList.contains('active')) {
@@ -67,7 +67,7 @@ function loadProductData(sku) {
         }
         // Agregar más productos según sea necesario
     };
-    
+
     const product = productData[sku];
     if(product) {
         document.getElementById('editProductCategory').value = product.category;
@@ -80,3 +80,6 @@ function loadProductData(sku) {
 
 // Cambio automático del año en el footer
 document.getElementById('year').textContent = new Date().getFullYear();
+
+
+///////////////////////////// Asignar sucursal /////////////////////////////////////

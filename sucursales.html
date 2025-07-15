@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Prototipo POS</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css?v=1.0.2">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="img/llave-de-sol.png" type="image/png">
+    <!-- Bootstrap Icons (para íconos de flechas) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body style="background-color: lightgray">
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand navbar-dark bg-dark" style="display: block; flex-wrap: nowrap;">
+        <div class="container-fluid">
+
+            <!-- Botón de flecha para volver atrás -->
+            <button class="btn btn-dark" onclick="window.location.href='dashboard.html'">
+                <i class="bi bi-arrow-left-circle"></i>
+            </button>
+
+            <!-- Texto centrado -->
+            <div class="mx-auto text-white d-none d-md-block">
+                <span class="h5" style="text-decoration: underline;">Sucursales</span>
+            </div>
+
+            <!-- Información del usuario en la esquina derecha -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item d-none d-sm-block">
+                    <span class="nav-link text-white">Administrador&nbsp;&nbsp;&nbsp;&nbsp;|</span> <!-- Texto adicional -->
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contreras Stoltze José Manuel</a>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <li><p class="dropdown-item">Administrador</p></li>
+                        <li><hr class="dropdown-divider"></li> <!-- Líneas divisoria -->
+                        <li><p class="dropdown-item">jmcstoltze</p></li>
+                        <li><p class="dropdown-item">jmcontreras.stoltze@gmail.com</p></li>
+                        <li><p class="dropdown-item">+569 9635 2539</p></li>
+                        <li><hr class="dropdown-divider"></li><!-- Líneas divisoria -->
+                        <li><a class="dropdown-item logout-btn" href="index.html">Cerrar sesión <i class="bi bi-arrow-right-circle"></i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Pestañas para navegar entre las secciones -->
+        <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="jefes-tab" data-bs-toggle="tab" data-bs-target="#jefes" type="button" role="tab">
+                    <i class="bi bi-person-gear me-2"></i>Asignar Sucursales
+                </button>
+            </li>
+        </ul>
+
+        <!-- Contenido de la pestaña -->
+        <div class="tab-content p-3 border border-top-0 rounded-bottom shadow-sm bg-white">
+            <!-- Pestaña de Jefes de Local -->
+            <div class="tab-pane fade show active" id="jefes" role="tabpanel">
+                <div class="row justify-content-center">
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-4">
+                        <div class="card mb-4">
+                            <div class="card-header bg-custom text-white">
+                                <h5 class="mb-0">Jefes de Local</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" placeholder="Buscar..." id="searchJefes">
+                                    <button class="btn btn-outline-secondary" type="button">
+                                        <i class="bi bi-search"></i>
+                                    </button>
+                                </div>
+                                <div class="list-group" style="max-height: 400px; overflow-y: auto;">
+                                    <a href="#" class="list-group-item list-group-item-action jefe-item active-custom">
+                                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                            <div class="me-4">González Pérez, María</div>
+                                            <span class="badge bg-custom">Sucursal Centro</span>
+                                        </div>                                        
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action jefe-item">
+                                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                            <div class="me-4">López Martínez, Carlos</div>
+                                            <span class="badge bg-custom">Sucursal Norte</span>
+                                        </div>                                        
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action jefe-item">
+                                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                            <div class="me-4">Rodríguez Sánchez, Ana</div>
+                                            <span class="badge bg-secondary">Sin asignar</span>
+                                        </div>                                        
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action jefe-item">
+                                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                            <div class="me-4">Fernández Ruiz, Pedro</div>
+                                        <span class="badge bg-custom">Sucursal Sur</span>
+                                        </div>                                        
+                                    </a>
+                                    <a href="#" class="list-group-item list-group-item-action jefe-item">
+                                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center">
+                                            <div class="me-4">Martínez Díaz, Luisa</div>
+                                            <span class="badge bg-secondary">Sin asignar</span>
+                                        </div>                                        
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 mb-4">
+                        <div class="card">
+                            <div class="card-header bg-custom-black text-white">
+                                <h5 class="mb-0">Asignar Sucursal</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="asignarSucursalForm">
+                                    <div class="mb-3">
+                                        <label class="form-label">Jefe de local seleccionado:</label>
+                                        <div class="form-control">González Pérez, María</div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="sucursalSelect" class="form-label">Sucursal:</label>
+                                        <select class="form-select" id="sucursalSelect" name="sucursal_id" required>
+                                            <option value="">Seleccione una sucursal</option>
+                                            <option value="1" selected>Sucursal Centro</option>
+                                            <option value="2">Sucursal Norte</option>
+                                            <option value="3">Sucursal Sur</option>
+                                            <option value="4">Sucursal Este</option>
+                                            <option value="5">Sucursal Oeste</option>
+                                        </select>
+                                    </div>
+                                    <button type="button" class="btn btn-solid-orange" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                                        <i class="bi bi-save me-2"></i>Guardar Asignación
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmación -->
+    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirmar Asignación</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    ¿Está seguro de asignar <strong>Sucursal Centro</strong> a <strong>González Pérez, María</strong>?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary">Confirmar</button>
+                </div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
