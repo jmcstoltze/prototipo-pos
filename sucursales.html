@@ -53,7 +53,7 @@
     </nav>
 
     <div class="container-fluid mt-4">
-        <!-- Pestañas para navegar entre las secciones -->
+        <!-- Pestaña única -->
         <ul class="nav nav-tabs" id="adminTabs" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="jefes-tab" data-bs-toggle="tab" data-bs-target="#jefes" type="button" role="tab">
@@ -138,7 +138,7 @@
                                         </select>
                                     </div>
                                     <button type="button" class="btn btn-solid-orange" data-bs-toggle="modal" data-bs-target="#confirmModal">
-                                        <i class="bi bi-save me-2"></i>Guardar Asignación
+                                        <i class="bi bi-save me-2"></i>Guardar Cambios
                                     </button>
                                 </form>
                             </div>
@@ -147,6 +147,20 @@
                 </div>
             </div>
         </div>
+
+        <!-- Botón para ir a asignar cajas -->
+        <div class="row">
+            <div class="col-md-6 col-sm-6"></div>
+            <div class="col-md-6 col-sm-6">
+                <div class="position-sm-absolute bottom-0 end-0 me-3 mt-4 mb-4">
+                    <a href="cajas.html" class="btn btn-solid-orange">
+                        <i class="bi bi-send me-2"></i>Ir a asignar cajas
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <br><br>
     </div>
 
     <!-- Modal de confirmación -->
@@ -154,15 +168,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Confirmar Asignación</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <h5 class="modal-title">Confirmación</h5>
+                    <button type="button" class="btn-close custom-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     ¿Está seguro de asignar <strong>Sucursal Centro</strong> a <strong>González Pérez, María</strong>?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary">Confirmar</button>
+                    <button type="button" class="btn btn-solid-orange">Confirmar</button>
                 </div>
             </div>
         </div>
