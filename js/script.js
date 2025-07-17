@@ -82,4 +82,22 @@ function loadProductData(sku) {
 document.getElementById('year').textContent = new Date().getFullYear();
 
 
-///////////////////////////// Asignar sucursal /////////////////////////////////////
+///////////////////////////// Gestión Venta /////////////////////////////////////
+
+document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebarVentas');
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const mainContent = document.querySelector('.main-content');
+    
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', function() {
+            sidebar.classList.toggle('active');
+            
+            if (sidebar.classList.contains('active')) {
+                mainContent.style.marginLeft = '30%';
+            } else {
+                mainContent.style.marginLeft = '0';
+            }
+        });
+    }
+});

@@ -514,3 +514,22 @@ html, body{
     background: var(--color-white);
     color: var(--color-black);
 }
+
+/********************* Sección de gestión de ventas ************************************/
+
+/* Estilos para el sidebar a la derecha */
+#sidebarVentas {
+    width: 350px;
+    height: calc(100vh - 56px); /* Resta la altura del navbar */
+    position: fixed;
+    right: 0;
+    top: 56px; /* Ajusta según la altura de tu navbar */
+    background-color: var(--bs-secondary); /* Usa el color de Bootstrap */
+    color: white;
+    transition: all 0.3s;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
