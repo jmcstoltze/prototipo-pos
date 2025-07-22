@@ -515,21 +515,97 @@ html, body{
     color: var(--color-black);
 }
 
-/********************* Sección de gestión de ventas ************************************/
-
-/* Estilos para el sidebar a la derecha */
-#sidebarVentas {
-    width: 350px;
-    height: calc(100vh - 56px); /* Resta la altura del navbar */
-    position: fixed;
-    right: 0;
-    top: 56px; /* Ajusta según la altura de tu navbar */
-    background-color: var(--bs-secondary); /* Usa el color de Bootstrap */
-    color: white;
-    transition: all 0.3s;
+/******************* Gestión de ventas *******************/
+.sidebar-custom {
+    position: fixed; /**/
+    background-color: #6c757d;
+    height: calc(100vh - 56px);
     overflow-y: auto;
-    z-index: 1000;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 56px;
+    /*right: 0;*/
+    right: -100%;
+    width: 100%;
+    max-width: 320px;
+    /*width: 350px;*/
+    /*z-index: 1000;*/
+    /*transition: transform 0.3s ease;*/
+    transition: right 0.3s ease;
+    z-index: 1030;
 }
 
+.sidebar-custom.show {
+    right: 0;
+}
 
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    /*z-index: 999;*/
+    z-index: 1020;
+}
+
+.sidebar-overlay.show {
+    display: block;
+}
+
+/* Evitar scroll cuando el sidebar está abierto en móviles */
+.no-scroll {
+    overflow: hidden;
+}
+
+.main-content {
+    padding: 20px;
+    background-color: lightgray;
+    width: 100%;
+    transition: margin-right 0.3s ease;
+}
+
+/* Comportamiento en móviles */
+@media (max-width: 767.98px) {
+    .sidebar-custom {
+        transform: translateX(100%);
+        width: 80%;
+    }
+    .sidebar-custom.show {
+        transform: translateX(0);
+    }
+    .sidebar-overlay.show {
+        display: block;
+    }
+}
+
+/* Comportamiento en pantallas medianas/grandes */
+@media (min-width: 768px) {
+    .sidebar-custom {
+        position: fixed;
+        top: 56px;
+        right: 0;
+        width: 350px;
+        height: calc(100vh - 56px);
+    }
+    .main-content {
+        width: calc(100% - 350px);
+        margin-right: 0;
+        padding-right: 0;
+    }
+}
+
+/* Comportamiento en móviles (mantén este igual) */
+@media (max-width: 767.98px) {
+    .sidebar-custom {
+        transform: translateX(100%);
+        width: 80%;
+    }
+    .sidebar-custom.show {
+        transform: translateX(0);
+    }
+    .sidebar-overlay.show {
+        display: block;
+    }
+}

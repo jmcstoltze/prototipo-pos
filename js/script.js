@@ -85,19 +85,61 @@ document.getElementById('year').textContent = new Date().getFullYear();
 ///////////////////////////// Gestión Venta /////////////////////////////////////
 
 document.addEventListener('DOMContentLoaded', function() {
+    // Elementos del DOM
     const sidebar = document.getElementById('sidebarVentas');
+    const overlay = document.getElementById('sidebarOverlay');
     const sidebarToggle = document.getElementById('sidebarToggle');
     const mainContent = document.querySelector('.main-content');
-    
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('active');
-            
-            if (sidebar.classList.contains('active')) {
-                mainContent.style.marginLeft = '30%';
-            } else {
-                mainContent.style.marginLeft = '0';
-            }
-        });
+
+    // Solo continuar si todos los elementos existen
+    if (!sidebar || !overlay || !sidebarToggle) return;
+
+    // Función para abrir/cerrar el sidebar
+    function toggleSidebar() {
+        sidebar.classList.toggle('show');
+        overlay.classList.toggle('show');
+        
+        // Para móviles: evitar scroll del contenido principal cuando el sidebar está abierto
+        if (window.innerWidth < 768) {
+            document.body.classList.toggle('no-scroll');
+        }
     }
+
+    // Función para cerrar el sidebar
+    function closeSidebar() {
+        sidebar.classList.remove('show');
+        overlay.classList.remove('show');
+        document.body.classList.remove('no-scroll');
+    }
+
+    // Event listeners
+    sidebarToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleSidebar();
+    });
+
+    overlay.addEventListener('click', closeSidebar);
+
+    // Manejar cambios de tamaño de pantalla
+    function handleResponsive() {
+        if (window.innerWidth >= 768) {
+            // Pantallas grandes: sidebar siempre visible
+            sidebar.classList.add('show');
+            overlay.classList.remove('show');
+            document.body.classList.remove('no-scroll');
+        } else {
+            // Pantallas pequeñas: sidebar oculto por defecto
+            sidebar.classList.remove('show');
+            overlay.classList.remove('show');
+        }
+    }
+
+    // Inicializar y configurar el resize listener
+    handleResponsive();
+    window.addEventListener('resize', handleResponsive);
+
+    // Evitar que el sidebar se cierre al hacer clic dentro de él
+    sidebar.addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
 });
